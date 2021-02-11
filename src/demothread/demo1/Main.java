@@ -15,7 +15,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        noThread t1=new noThread(1);
+        noThread t2=new noThread(2);
+        noThread t3=new noThread(3);
+        t1.start();
+        t2.start();  
+        t3.start();  
     }
     
 }
