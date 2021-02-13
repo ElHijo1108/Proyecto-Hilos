@@ -95,8 +95,8 @@ public class Main extends javax.swing.JFrame {
        });
        
        
-       t1.start(10_000_001,20_000_000);
-       t2.start(20_000_001,30_000_000);
+       t1.start(10_000_001,90_000_000);
+       t2.start(90_000_001,120_000_000);
     }//GEN-LAST:event_butStartActionPerformed
 
     /**
