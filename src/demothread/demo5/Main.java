@@ -31,6 +31,7 @@ public class Main extends javax.swing.JFrame {
 
         labCounter = new javax.swing.JLabel();
         butStart = new javax.swing.JButton();
+        labCounter2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,6 +41,8 @@ public class Main extends javax.swing.JFrame {
                 butStartActionPerformed(evt);
             }
         });
+
+        labCounter2.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,15 +55,20 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(labCounter))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(butStart)))
-                .addContainerGap(307, Short.MAX_VALUE))
+                        .addComponent(butStart))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(labCounter2)))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labCounter)
-                .addGap(73, 73, 73)
+                .addGap(11, 11, 11)
+                .addComponent(labCounter2)
+                .addGap(48, 48, 48)
                 .addComponent(butStart)
                 .addContainerGap(193, Short.MAX_VALUE))
         );
@@ -70,7 +78,7 @@ public class Main extends javax.swing.JFrame {
 
     private void butStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butStartActionPerformed
        Mythread t1=null;
-        
+       Mythread t2=null;
        t1=new Mythread(1,new Mythread.onChange(){
            @Override
            public void show(int value) {
@@ -78,7 +86,17 @@ public class Main extends javax.swing.JFrame {
            }
            
        });
-       t1.start();
+       t2=new Mythread(1,new Mythread.onChange(){
+           @Override
+           public void show(int value) {
+               labCounter2.setText(String.valueOf(value));
+           }
+           
+       });
+       
+       
+       t1.start(10_000_001,20_000_000);
+       t2.start(20_000_001,30_000_000);
     }//GEN-LAST:event_butStartActionPerformed
 
     /**
@@ -119,5 +137,6 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butStart;
     private javax.swing.JLabel labCounter;
+    private javax.swing.JLabel labCounter2;
     // End of variables declaration//GEN-END:variables
 }

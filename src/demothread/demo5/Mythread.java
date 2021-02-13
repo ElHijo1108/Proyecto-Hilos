@@ -11,9 +11,10 @@ package demothread.demo5;
  */
 public class Mythread implements Runnable{
     private Thread theThread=null;
-    private int theCounter = 0;
     private int TheID = 0;
     private onChange theDelegate;
+    private int theInitValue=0;
+    private int theEndValue=0;
 
     public Mythread(int newID, onChange delegate) {
         TheID = newID;
@@ -21,7 +22,9 @@ public class Mythread implements Runnable{
         theThread=new Thread(this);
     }
     
-     public Thread start(){
+     public Thread start(int iniVal, int endVal){
+        theInitValue=iniVal;
+        theEndValue=endVal;
         theThread.start();
         return theThread;
     }
@@ -29,7 +32,8 @@ public class Mythread implements Runnable{
 
     @Override
     public void run() {
-        for (int i = 0; i < 20_000_000; i++) {
+        int theCounter=theInitValue-1;
+        for (int i = theCounter; i < theEndValue; i++) {
             theCounter++;
             //System.out.println("Task " + TheID + " = " + theCounter);
             theDelegate.show(theCounter);
