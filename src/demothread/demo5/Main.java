@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package demothread.demo4;
+package demothread.demo5;
+
+import demothread.demo5.Mythread;
 
 /**
  *
@@ -32,8 +34,6 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        labCounter.setText("0");
-
         butStart.setText("Start");
         butStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,33 +48,37 @@ public class Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(63, 63, 63)
                         .addComponent(labCounter))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addGap(36, 36, 36)
                         .addComponent(butStart)))
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(labCounter)
-                .addGap(36, 36, 36)
+                .addGap(73, 73, 73)
                 .addComponent(butStart)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void butStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butStartActionPerformed
-       
+       Mythread t1=null;
         
-        
-       noThread t1=new noThread(1,labCounter);
+       t1=new Mythread(1,new Mythread.onChange(){
+           @Override
+           public void show(int value) {
+               labCounter.setText(String.valueOf(value));
+           }
+           
+       });
        t1.start();
-       
     }//GEN-LAST:event_butStartActionPerformed
 
     /**
