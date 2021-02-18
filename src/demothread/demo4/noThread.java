@@ -15,11 +15,13 @@ import javax.swing.JLabel;
 public class noThread {
      private int theCounter=0;
     private int TheID=0;
-    private JLabel labOutput=null;
+    //private JLabel labOutput=null;
+    private OnChange theDelegate=null;
 
-    public noThread(int newID, JLabel labNew) {
+    public noThread(int newID, OnChange newDelegate) {
         TheID=newID;
-        labOutput=labNew;
+        theDelegate=newDelegate;
+        //labOutput=labNew;
     }
     public void start(){
         run();
@@ -27,8 +29,17 @@ public class noThread {
     public void run(){
         for (int i = 0; i < 20_000_000; i++) {
             theCounter++;
-            labOutput.setText(String.valueOf(theCounter));
+            //labOutput.setText(String.valueOf(theCounter));
+            if(theDelegate!=null){
+                theDelegate.show(theCounter);
+            }
         }
     }
+    public interface OnChange {
+
+        public abstract void show(int value);
+    }
+    
+    
     
 }

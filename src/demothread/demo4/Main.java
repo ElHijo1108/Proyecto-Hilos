@@ -70,9 +70,17 @@ public class Main extends javax.swing.JFrame {
 
     private void butStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butStartActionPerformed
        
-        
-        
-       noThread t1=new noThread(1,labCounter);
+       noThread t1=null;
+       noThread t2=null;
+       t1=new noThread(1,new noThread.OnChange(){
+           @Override
+           public void show(int value) {
+               labCounter.setText(String.valueOf(value));
+           }
+           
+       });
+
+   
        t1.start();
        
     }//GEN-LAST:event_butStartActionPerformed
