@@ -80,7 +80,14 @@ public class Main extends javax.swing.JFrame {
            
        });
 
-   
+        
+      /* //otra manera de hacerlo
+       
+       t2=new noThread(1,(value) -> {
+           labCounter.setText(String.valueOf(value));
+       });
+       
+       */
        t1.start();
        
     }//GEN-LAST:event_butStartActionPerformed

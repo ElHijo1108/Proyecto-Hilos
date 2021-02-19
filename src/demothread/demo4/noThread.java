@@ -36,7 +36,6 @@ public class noThread {
         }
     }
     public interface OnChange {
-
         public abstract void show(int value);
     }
     
